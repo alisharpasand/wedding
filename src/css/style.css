@@ -1,0 +1,211 @@
+/* Variables */
+:root {
+    --primary-color: #CBD7AE;
+    --text-color: #333;
+    --background-color: #fff;
+    --section-padding: 8rem 2rem;
+    --border-radius: 15px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --font-family: 'Sahel', sans-serif;
+}
+
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+p {
+    font-size: 1rem;
+    margin: 0.5rem;
+}
+
+/* Screen Styles */
+.screen {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.screen-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* First Screen */
+.screen-1 {
+    background-image: url('../../assets/images/ax 01.png');
+}
+
+.couple-image {
+    width: auto;
+    max-width: 100%;
+    height: 33.33vh !important;
+    object-fit: contain;
+    margin: 1rem;
+    animation: float 10s ease-in-out infinite;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-7px); }
+    50% { transform: translateY(0px); }
+    75% { transform: translateY(-7px); }
+    100% { transform: translateY(0px); }
+}
+
+/* Second Screen */
+.screen-2 {
+    background-image: url('../../assets/images/ax 02.png');
+}
+
+.poem {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10rem;
+    text-align: center;
+    padding: 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.poem .note {
+    font-size: 1rem;
+    line-height: 2;
+    color: white;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Third Screen */
+.screen-3 {
+    background-color: #f9f9f9;
+    height: 100vh;
+}
+
+.screen-3 .screen-content {
+    padding: 0;
+    margin: 0;
+}
+
+.gallery {
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.gallery-image {
+    width: 100vw;
+    height: 15vh;
+    object-fit: cover;
+}
+
+.map-container {
+    width: 100%;
+    height: 55vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Decorative Elements */
+.ornament {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    margin: 0.5rem;
+}
+
+.ornament-bottom {
+    transform: rotate(180deg);
+    margin-bottom: 1rem;
+}
+
+.date {
+    font-weight: 700;
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1000;
+}
+
+.music-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .screen-3 {
+        height: 200vh;
+    }
+
+    .gallery-image, .map-container {
+        height: 50vh;
+    }
+}

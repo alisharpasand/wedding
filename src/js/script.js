@@ -27,6 +27,18 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // Add loading animation
 document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('loaded');
+    
+    // Handle URL parameters for guest name
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestName = urlParams.get('guest');
+    if (guestName) {
+        const headerContent = document.querySelector('.screen-content');
+        const welcomeText = document.createElement('p');
+        welcomeText.textContent = `سلام ${guestName} عزیز`;
+        welcomeText.style.fontSize = '1.5rem';
+        welcomeText.style.marginBottom = '1rem';
+        headerContent.insertBefore(welcomeText, headerContent.firstChild);
+    }
 });
 
 // Initialize AOS
@@ -44,18 +56,6 @@ document.addEventListener('DOMContentLoaded', () => {
             scale: 1.2,
             delay: 0.4
         });
-    }
-
-    // Handle URL parameters for guest name
-    const urlParams = new URLSearchParams(window.location.search);
-    const guestName = urlParams.get('guest');
-    if (guestName) {
-        const headerContent = document.querySelector('.header-content');
-        const welcomeText = document.createElement('p');
-        welcomeText.textContent = `سلام ${guestName} عزیز`;
-        welcomeText.style.fontSize = '1.5rem';
-        welcomeText.style.marginBottom = '1rem';
-        headerContent.insertBefore(welcomeText, headerContent.firstChild);
     }
 
     // RSVP Form handling

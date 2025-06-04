@@ -5,20 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>علی ❤️ شیوا | دعوت‌نامه عروسی</title>
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css" rel="stylesheet" type="text/css" />
     
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
     <!-- First Screen -->
     <section class="screen screen-1">
         <div class="screen-content">
-            <img src="digi/tahzib 1.png" alt="تذهیب" class="tahzib tahzib-top">
-            <img src="digi/Ali Shiva.png" alt="علی و شیوا" class="couple-image">
-            <img src="digi/tahzib 1.png" alt="تذهیب" class="tahzib tahzib-bottom">
+            <img src="assets/images/ornament.png" alt="تذهیب" class="ornament">
+            <img src="assets/images/couple.png" alt="علی و شیوا" class="couple-image">
+            <img src="assets/images/ornament.png" alt="تذهیب" class="ornament ornament-bottom">
             <p class="date">۲۵ خرداد ۱۴۰۴
                 <br />
                 باغ تالار سورینو، گرمدره
@@ -52,9 +55,9 @@
     <section class="screen screen-3">
         <div class="screen-content">
             <div class="gallery">
-                <img src="digi/ax 03.png" alt="گالری ۱" class="gallery-image">
-                <img src="digi/ax 04.png" alt="گالری ۲" class="gallery-image">
-                <img src="digi/ax 05.png" alt="گالری ۳" class="gallery-image">
+                <img src="assets/images/ax 03.png" alt="گالری ۱" class="gallery-image">
+                <img src="assets/images/ax 04.png" alt="گالری ۲" class="gallery-image">
+                <img src="assets/images/ax 05.png" alt="گالری ۳" class="gallery-image">
             </div>
             <div class="map-container">
                 <iframe 
@@ -67,21 +70,19 @@
                     referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
-        
-
         </div>
     </section>
 
     <!-- Music Player -->
     <div class="music-player">
         <audio id="bgMusic" loop>
-            <source src="" type="audio/mpeg">
+            <source src="assets/audio/background-music.mp3" type="audio/mpeg">
             مرورگر شما از پخش صدا پشتیبانی نمی‌کند.
         </audio>
         <button id="musicToggle" class="music-toggle">🎵</button>
     </div>
 
     <!-- Custom JS -->
-    <script src="script.js" defer></script>
+    <script src="src/js/script.js" defer></script>
 </body>
 </html> 
