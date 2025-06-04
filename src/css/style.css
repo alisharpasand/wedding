@@ -66,7 +66,7 @@ p {
 
 /* First Screen */
 .screen-1 {
-    background-image: url('../../assets/images/ax 01.png');
+    background-image: url('../../assets/images/01.jpg');
     height: 130vh;
 }
 
@@ -104,7 +104,7 @@ p {
 
 /* Second Screen */
 .screen-2 {
-    background-image: url('../../assets/images/ax 02.png');
+    background-image: url('../../assets/images/02.jpg');
 }
 
 .poem {
