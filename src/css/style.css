@@ -38,7 +38,8 @@ h1, h2, h3 {
 hr {
     border: 1px solid var(--primary-color);
     width: 90%;
-    margin: 1rem;
+    margin: 0;
+    padding: 0;
 }
 
 p {
