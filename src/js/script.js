@@ -3,15 +3,49 @@ const musicToggle = document.getElementById('musicToggle');
 const bgMusic = document.getElementById('bgMusic');
 let isPlaying = false;
 
-musicToggle.addEventListener('click', () => {
+// Function to start playing
+function startPlaying() {
+    bgMusic.muted = false;
+    return bgMusic.play().then(() => {
+        isPlaying = true;
+        musicToggle.textContent = '⏸️';
+    }).catch(error => {
+        console.log('Autoplay prevented:', error);
+        isPlaying = false;
+        musicToggle.textContent = '🎵';
+    });
+}
+
+// Try to start playing when page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Try to play after a short delay
+    setTimeout(() => {
+        startPlaying().catch(() => {
+            // If autoplay fails, set initial button state
+            musicToggle.textContent = '🎵';
+        });
+    }, 1000);
+});
+
+// Also try to play on first user interaction
+document.addEventListener('click', () => {
+    if (!isPlaying) {
+        startPlaying();
+    }
+}, { once: true });
+
+musicToggle.addEventListener('click', async () => {
     if (isPlaying) {
         bgMusic.pause();
         musicToggle.textContent = '🎵';
+        isPlaying = false;
     } else {
-        bgMusic.play();
-        musicToggle.textContent = '⏸️';
+        try {
+            await startPlaying();
+        } catch (error) {
+            console.log('Failed to play:', error);
+        }
     }
-    isPlaying = !isPlaying;
 });
 
 // Smooth scrolling for navigation
