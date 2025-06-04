@@ -35,6 +35,12 @@ h1, h2, h3 {
     margin-bottom: 2rem;
 }
 
+hr {
+    border: 1px solid var(--primary-color);
+    width: 90%;
+    margin: 1rem;
+}
+
 p {
     font-size: 1rem;
     margin: 0.5rem;
