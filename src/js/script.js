@@ -16,8 +16,37 @@ function startPlaying() {
     });
 }
 
+// Function to fetch and parse guest data
+async function fetchGuestData(guestId) {
+    try {
+        const response = await fetch('assets/guests.csv');
+        const csvText = await response.text();
+        
+        // Split by newlines and clean up each line
+        const lines = csvText.split('\n')
+            .map(line => line.trim())
+            .filter(line => line.length > 0);
+        
+        const headers = lines[0].split(',').map(h => h.trim());
+        const idIndex = headers.indexOf('id');
+        const nameIndex = headers.indexOf('name');
+        
+        for (let i = 1; i < lines.length; i++) {
+            const values = lines[i].split(',').map(v => v.trim());
+            if (values[idIndex] === guestId) {
+                const name = values[nameIndex].replace(/\r$/, ''); // Remove any trailing \r
+                return name;
+            }
+        }
+        return null;
+    } catch (error) {
+        console.error('Error fetching guest data:', error);
+        return null;
+    }
+}
+
 // Try to start playing when page loads
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
     // Try to play after a short delay
     setTimeout(() => {
         startPlaying().catch(() => {
@@ -25,6 +54,21 @@ document.addEventListener('DOMContentLoaded', () => {
             musicToggle.textContent = '🎵';
         });
     }, 1000);
+
+    // Handle URL parameters for guest ID
+    const urlParams = new URLSearchParams(window.location.search);
+    const guestId = urlParams.get('id');
+    
+    if (guestId) {
+        const guestName = await fetchGuestData(guestId);
+        
+        if (guestName) {
+            const recipientElement = document.querySelector('.recipient');
+            if (recipientElement) {
+                recipientElement.textContent = guestName + '،';
+            }
+        }
+    }
 });
 
 // Also try to play on first user interaction
@@ -74,65 +118,3 @@ document.addEventListener('DOMContentLoaded', () => {
         headerContent.insertBefore(welcomeText, headerContent.firstChild);
     }
 });
-
-// Initialize AOS
-document.addEventListener('DOMContentLoaded', () => {
-    AOS.init({
-        duration: 1000,
-        once: true,
-        offset: 100
-    });
-
-    // Initialize Parallax
-    const headerImage = document.querySelector('.header-image');
-    if (headerImage) {
-        new simpleParallax(headerImage, {
-            scale: 1.2,
-            delay: 0.4
-        });
-    }
-
-    // RSVP Form handling
-    const rsvpForm = document.getElementById('rsvpForm');
-    if (rsvpForm) {
-        rsvpForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            
-            const formData = new FormData(rsvpForm);
-            const response = {
-                name: formData.get('name'),
-                attendance: formData.get('attendance')
-            };
-
-            // Here you would typically send this data to a server
-            console.log('RSVP Response:', response);
-            
-            // Show confirmation message
-            const confirmation = document.createElement('div');
-            confirmation.textContent = 'ممنون از پاسخ شما!';
-            confirmation.style.textAlign = 'center';
-            confirmation.style.marginTop = '1rem';
-            confirmation.style.color = 'var(--primary-color)';
-            
-            rsvpForm.innerHTML = '';
-            rsvpForm.appendChild(confirmation);
-        });
-    }
-
-    // Lazy loading for images
-    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-    if ('loading' in HTMLImageElement.prototype) {
-        lazyImages.forEach(img => {
-            img.classList.add('loading');
-            img.addEventListener('load', () => {
-                img.classList.remove('loading');
-                img.classList.add('loaded');
-            });
-        });
-    } else {
-        // Fallback for browsers that don't support lazy loading
-        const lazyLoadScript = document.createElement('script');
-        lazyLoadScript.src = 'https://cdnjs.cloudflare.com/ajax/libs/lazysizes/5.3.2/lazysizes.min.js';
-        document.body.appendChild(lazyLoadScript);
-    }
-}); 
