@@ -112,13 +112,19 @@ p {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 10rem;
+    height: 20rem;
     text-align: center;
     padding: 1rem;
-    background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+    background: linear-gradient(to top, rgba(0, 0, 0, .9), transparent);
     display: flex;
     align-items: flex-end;
     justify-content: center;
+}
+
+.poem img {
+    max-width: 90%;
+    max-height: 18rem;
+    object-fit: contain;
 }
 
 .poem .note {
