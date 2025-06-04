@@ -136,7 +136,7 @@ p {
 /* Third Screen */
 .screen-3 {
     background-color: #f9f9f9;
-    height: 100vh;
+    height: 140vh;
 }
 
 .screen-3 .screen-content {
@@ -156,13 +156,13 @@ p {
 
 .gallery-image {
     width: 100vw;
-    height: 15vh;
+    height: 25vh;
     object-fit: cover;
 }
 
 .map-container {
     width: 100%;
-    height: 55vh;
+    height: 45vh;
     margin: 0;
     padding: 0;
     border-radius: 0;
@@ -195,6 +195,20 @@ p {
 .recipient {
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+.spacer {
+    height: 10vh;
+    padding: 0.5rem;
+    background-color: #F9FCF8;
+    width: 100%;
+    margin: 0;
+}
+
+.address {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 /* Music Player */

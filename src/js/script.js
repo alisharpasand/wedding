@@ -5,7 +5,6 @@ let isPlaying = false;
 
 // Function to start playing
 function startPlaying() {
-    bgMusic.muted = false;
     return bgMusic.play().then(() => {
         isPlaying = true;
         musicToggle.textContent = '⏸️';
@@ -70,13 +69,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 });
-
-// Also try to play on first user interaction
-document.addEventListener('click', () => {
-    if (!isPlaying) {
-        startPlaying();
-    }
-}, { once: true });
 
 musicToggle.addEventListener('click', async () => {
     if (isPlaying) {
