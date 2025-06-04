@@ -233,4 +233,17 @@ p {
     .gallery-image, .map-container {
         height: 50vh;
     }
+
+    .post-script {
+        font-size: 1rem;
+    }
+
+    .poem {
+        height: 15rem;
+    }
+
+    .poem .note {
+        font-size: 1.2rem;
+        padding: 2rem;
+    }
 }
