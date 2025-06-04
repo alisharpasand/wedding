@@ -1,0 +1,728 @@
+/* Base Styles */
+:root {
+    --primary-color: #CBD7AE;
+    --text-color: #333;
+    --background-color: #fff;
+    --section-padding: 8rem 2rem;
+    --border-radius: 15px;
+    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    --font-family: 'Sahel', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    overflow-x: hidden;
+}
+
+/* Typography */
+h1, h2, h3 {
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+h1 {
+    font-size: 4.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 3rem;
+    margin-top: 0;
+    color: var(--primary-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-color);
+    border-radius: 2px;
+}
+
+h3 {
+    font-size: 1.8rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+p {
+    font-size: 1.2rem;
+    line-height: 1.8;
+}
+
+/* Header Section */
+.header {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.header-content {
+    position: relative;
+    z-index: 2;
+    color: white;
+    padding: 2rem;
+    max-width: 800px;
+}
+
+.couple-image {
+    width: auto;
+    max-width: 100%;
+    height: 33.33vh !important;
+    object-fit: contain;
+    margin: 0;
+    animation: float 10s ease-in-out infinite;
+}
+
+.date, .note {
+    font-size: 1.8rem;
+    margin: 1rem;
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    25% { transform: translateY(-7px); }
+    50% { transform: translateY(0px); }
+    75% { transform: translateY(-7px); }
+    100% { transform: translateY(0px); }
+}
+
+.header-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.header-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.6);
+}
+
+/* Section Content */
+.section-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+/* Gallery Section */
+.gallery {
+    padding: var(--section-padding);
+    background-color: #f9f9f9;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.gallery-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.gallery-item:hover .gallery-image {
+    transform: scale(1.05);
+}
+
+/* Wedding Details */
+.details {
+    background: url('digi/tahzib 1.png') center/cover no-repeat fixed;
+    background-attachment: fixed;
+    position: relative;
+    margin: 0;
+    width: 100%;
+    padding: var(--section-padding);
+}
+
+.details > * {
+    position: relative;
+    z-index: 2;
+}
+
+.details-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.detail-item {
+    text-align: center;
+    padding: 2rem;
+    background: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.detail-item p {
+    margin-bottom: 0.5rem;
+    color: #666;
+}
+
+/* Map Container */
+.map-container {
+    width: 100%;
+    height: 450px;
+    margin: 2rem 0;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    box-shadow: var(--box-shadow);
+}
+
+/* Story Section */
+.story {
+    background: url('digi/tahzib 1.png') center/cover no-repeat fixed;
+    background-attachment: fixed;
+    position: relative;
+    margin: 0;
+    width: 100%;
+    padding: var(--section-padding);
+}
+
+.story > * {
+    position: relative;
+    z-index: 2;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.story-image {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: var(--border-radius);
+    margin: 0 auto;
+    box-shadow: var(--box-shadow);
+}
+
+.story-text {
+    font-size: 1.3rem;
+    line-height: 2;
+    text-align: justify;
+    color: #444;
+    background: white;
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+/* RSVP Form */
+.rsvp {
+    background-color: var(--primary-color);
+    margin: 0;
+    width: 100%;
+    padding: var(--section-padding);
+}
+
+.rsvp-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 3rem;
+    background-color: white;
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+}
+
+.form-group {
+    margin-bottom: 2rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.8rem;
+    font-weight: 500;
+    color: #444;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #eee;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1.1rem;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    outline: none;
+    border-color: var(--primary-color);
+}
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.radio-group label {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.submit-btn {
+    width: 100%;
+    padding: 1.2rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: var(--border-radius);
+    font-family: inherit;
+    font-size: 1.2rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.submit-btn:hover {
+    background-color: #a8b38d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    bottom: 2rem;
+    left: 2rem;
+    z-index: 1000;
+}
+
+.music-toggle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    :root {
+        --section-padding: 6rem 1.5rem;
+    }
+
+    h1 {
+        font-size: 3rem;
+    }
+
+    h2 {
+        font-size: 2.2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .couple-image {
+        max-width: 100%;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .gallery-image {
+        height: 300px;
+    }
+
+    .details-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .story-content {
+        gap: 2rem;
+    }
+
+    .story-text {
+        font-size: 1.1rem;
+        padding: 1.5rem;
+    }
+
+    .rsvp-form {
+        padding: 2rem;
+    }
+
+    .date, .note {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .couple-image {
+        max-width: 100%;
+    }
+
+    h1 {
+        font-size: 3.5rem;
+    }
+
+    .date, .note {
+        font-size: 1.5rem;
+    }
+
+    h2 {
+        font-size: 2.5rem;
+    }
+
+    .details {
+        max-width: 600px;
+    }
+
+    .detail-item {
+        padding: 2rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .detail-item p {
+        font-size: 1.2rem;
+    }
+
+    .map-container {
+        max-width: 100%;
+        height: 55vh;
+    }
+
+    .gallery {
+        max-width: 100%;
+    }
+
+    .gallery-image {
+        height: 15vh;
+    }
+}
+
+/* Animations */
+[data-aos] {
+    pointer-events: none;
+}
+
+[data-aos].aos-animate {
+    pointer-events: auto;
+}
+
+/* Loading Animation */
+.loading {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.loaded {
+    opacity: 1;
+}
+
+/* Screen Styles */
+.screen {
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.screen-content {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    text-align: center;
+}
+
+/* First Screen */
+.screen-1 {
+    background-image: url('digi/ax 01.png');
+}
+
+.couple-image {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin: 1rem;
+}
+
+/* Second Screen */
+.screen-2 {
+    background-image: url('digi/ax 02.png');
+    padding: 0;
+    margin: 0;
+}
+
+.screen-2 .screen-content {
+    padding: 0.5rem;
+}
+
+/* Third Screen */
+.screen-3 {
+    background-color: #f9f9f9;
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.screen-3 .screen-content {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.gallery {
+    width: 100vw;
+    max-width: 100vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    padding: 0;
+    margin: 0;
+}
+
+.gallery-image {
+    width: 100vw;
+    height: 15vh;
+    object-fit: cover;
+    border-radius: 0;
+    box-shadow: none;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+.map-container {
+    width: 100%;
+    height: 55vh;
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    overflow: hidden;
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* Details Section */
+.details {
+    width: 100%;
+    max-width: 100%;
+    padding: 0 1rem;
+    margin-bottom: 2rem;
+}
+
+.detail-item {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-bottom: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.map-container {
+    width: 100%;
+    max-width: 100%;
+    height: 55vh;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 1rem;
+}
+
+/* Typography */
+h1 {
+    font-size: 2.5rem;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    margin-bottom: 1rem;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 2rem;
+}
+
+h3 {
+    font-size: 1.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.date, .note {
+    font-size: 0.8rem;
+    color: black;
+    margin-bottom: 0.5rem;
+}
+
+.detail-item p {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.3rem;
+}
+
+/* Music Player */
+.music-player {
+    position: fixed;
+    bottom: 1rem;
+    left: 1rem;
+    z-index: 1000;
+}
+
+.music-toggle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--primary-color);
+    border: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.music-toggle:hover {
+    transform: scale(1.1);
+}
+
+.tahzib {
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    margin: 0;
+}
+
+.tahzib-top {
+    margin: 0.5rem;
+}
+
+.tahzib-bottom {
+    transform: rotate(180deg);
+    margin: 0.5rem;
+} 
+
+.date {
+    font-weight: 700;
+}
+
+.poem {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 10rem;
+    text-align: center;
+    padding: 2rem 1rem;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1), transparent);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.poem .note {
+    font-size: 1rem;
+    line-height: 2;
+    color: white;
+    margin: 0;
+    font-weight: 500;
+}
+
+/* Tablet and Desktop Styles */
+@media (min-width: 768px) {
+    .screen-3 {
+        height: 200vh;
+    }
+    .gallery-image {
+        height: 50vh;
+    }
+    .map-container {
+        height: 50vh;
+    }
+}
