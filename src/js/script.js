@@ -4,15 +4,15 @@ const bgMusic = document.getElementById('bgMusic');
 let isPlaying = true;
 
 // Function to start playing
-function startPlaying() {
-    return bgMusic.play().then(() => {
-        isPlaying = true;
+async function startPlaying() {
+    try {
+        bgMusic.volume = 0.5;
+        await bgMusic.play();
         musicToggle.textContent = '⏸️';
-    }).catch(error => {
-        console.log('Autoplay prevented:', error);
-        isPlaying = false;
-        musicToggle.textContent = '🎵';
-    });
+    } catch (error) {
+        console.error('Error playing music:', error);
+        musicToggle.textContent = '▶️';
+    }
 }
 
 // Function to fetch and parse guest data
