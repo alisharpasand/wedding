@@ -1,18 +1,27 @@
 // Music Player
 const musicToggle = document.getElementById('musicToggle');
 const bgMusic = document.getElementById('bgMusic');
-let isPlaying = true;
+let isPlaying = false;
 
 // Function to start playing
 async function startPlaying() {
     try {
         bgMusic.volume = 0.5;
         await bgMusic.play();
+        isPlaying = true;
         musicToggle.textContent = '⏸️';
     } catch (error) {
         console.error('Error playing music:', error);
-        musicToggle.textContent = '▶️';
+        isPlaying = false;
+        musicToggle.textContent = '🎵';
     }
+}
+
+// Function to pause playing
+function pausePlaying() {
+    bgMusic.pause();
+    isPlaying = false;
+    musicToggle.textContent = '🎵';
 }
 
 // Function to fetch and parse guest data
@@ -46,41 +55,43 @@ async function fetchGuestData(guestId) {
 
 // Try to start playing when page loads
 document.addEventListener('DOMContentLoaded', async () => {
-    // Try to play after a short delay
-    setTimeout(() => {
-        startPlaying().catch(() => {
-            // If autoplay fails, set initial button state
-            musicToggle.textContent = '🎵';
-        });
-    }, 50);
-
+    // Try to play immediately
+    try {
+        await startPlaying();
+    } catch (error) {
+        // If immediate play fails, try again after a short delay
+        setTimeout(async () => {
+            try {
+                await startPlaying();
+            } catch (error) {
+                // If both attempts fail, show play button
+                musicToggle.textContent = '🎵';
+            }
+        }, 100);
+    }
+    
     // Handle URL parameters for guest ID
     const urlParams = new URLSearchParams(window.location.search);
     const guestId = urlParams.get('id');
     
     if (guestId) {
-        const guestName = await fetchGuestData(guestId);
-        
-        if (guestName) {
-            const recipientElement = document.querySelector('.recipient');
-            if (recipientElement) {
-                recipientElement.textContent = guestName + '،';
+        fetchGuestData(guestId).then(guestName => {
+            if (guestName) {
+                const recipientElement = document.querySelector('.recipient');
+                if (recipientElement) {
+                    recipientElement.textContent = guestName + '،';
+                }
             }
-        }
+        });
     }
 });
 
+// Handle music toggle click
 musicToggle.addEventListener('click', async () => {
     if (isPlaying) {
-        bgMusic.pause();
-        musicToggle.textContent = '🎵';
-        isPlaying = false;
+        pausePlaying();
     } else {
-        try {
-            await startPlaying();
-        } catch (error) {
-            console.log('Failed to play:', error);
-        }
+        await startPlaying();
     }
 });
 
