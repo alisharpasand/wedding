@@ -129,6 +129,10 @@ p {
     font-weight: 500;
 }
 
+.note {
+    margin-bottom: 1rem;
+}
+
 .post-script {
     font-size: 0.8rem;
 }
