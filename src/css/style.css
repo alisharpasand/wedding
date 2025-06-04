@@ -160,6 +160,10 @@ p {
     object-fit: cover;
 }
 
+.gallery-image-small {
+    height: 15vh;
+}
+
 .map-container {
     width: 100%;
     height: 45vh;
