@@ -254,6 +254,14 @@ p {
 
 /* Responsive Design */
 @media (min-width: 768px) {
+    .p{
+        font-size: 1.2rem;
+    }
+
+    .note {
+        margin-bottom: 3rem;
+    }
+
     .screen-3 {
         height: 200vh;
     }
