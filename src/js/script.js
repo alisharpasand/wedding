@@ -47,12 +47,12 @@ async function fetchGuestData(guestId) {
 // Try to start playing when page loads
 document.addEventListener('DOMContentLoaded', async () => {
     // Try to play after a short delay
-    // setTimeout(() => {
-    //     startPlaying().catch(() => {
-    //         // If autoplay fails, set initial button state
-    //         musicToggle.textContent = '🎵';
-    //     });
-    // }, 1000);
+    setTimeout(() => {
+        startPlaying().catch(() => {
+            // If autoplay fails, set initial button state
+            musicToggle.textContent = '🎵';
+        });
+    }, 50);
 
     // Handle URL parameters for guest ID
     const urlParams = new URLSearchParams(window.location.search);
